@@ -8,6 +8,7 @@
   
   table {
     width: 100%;
+    position: relative;
   }
 
   &__row {
@@ -16,6 +17,12 @@
     display: flex;
     padding: 1rem 0;
     width: 100%;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $light-red;
+      z-index: 1;
+    }
 
     &--read {
       background-color: $light-gray;

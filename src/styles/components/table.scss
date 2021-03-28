@@ -1,0 +1,70 @@
+@import '../index.scss';
+
+.table {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  width: 100%;
+  
+  table {
+    width: 100%;
+  }
+
+  &__row {
+    background-color: $background;
+    border-top: 1px solid $border;
+    display: flex;
+    padding: 1rem 0;
+    width: 100%;
+
+    &--read {
+      background-color: $light-gray;
+    }
+  }
+  
+  .checkbox {
+    padding: 0 1rem 0 1.4rem;
+  }
+
+  .favorite {
+    padding-right: 1rem;
+  }
+  
+  .sender {
+    display: flex;
+    max-width: 168px;
+    padding-right: 3.2rem;
+  }
+
+  .subject {
+    display: flex;
+    flex: 1 1 auto;
+    padding-right: 1rem;
+  }
+
+  .icon {
+    padding: 0 1rem;
+  }
+
+  .date {
+    padding-right: 1rem;
+  }
+
+  &__header {
+    display: flex;
+    .checkbox {
+      padding: 0 1rem 0 1.6rem;
+    }
+    .refresh {
+      width: 3.2rem;
+    }
+
+    .empty {
+      flex: 1 1 auto;
+    }
+
+    .pagination {
+      padding: 0 1rem;
+    }
+  }
+}

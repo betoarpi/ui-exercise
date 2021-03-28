@@ -1,0 +1,63 @@
+/* Color Variables */
+$light-gray:#F1F3F4;
+$background: #FFFFFF;
+$gray: #5F6368;
+$light-red: #FCE8E6;
+$red: #D93025;
+$text: #202124;
+$shadow: rgba(242,245,245,0.8);
+$darker-shadow: rgba(192, 192, 192, 0.2);
+$border: #DADCE0;
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: $background;
+  color: $text;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  * {
+    box-sizing: border-box;
+    font-size: 1.4rem;
+  }
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.main-container {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  padding: 1rem 0;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+input {
+  border: 1px solid $light-gray;
+  background-color: $light-gray;
+  border-radius: 0.8rem;
+  padding: 0.5rem 1rem;
+  &:focus {
+    border: 1px solid $border;
+    box-shadow: 0 0.1rem 0.3rem 0.1rem $shadow, inset 0 0.1rem 0.5rem 0.1rem $darker-shadow;
+    outline: none;
+  }
+}

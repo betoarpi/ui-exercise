@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const TableRow = ({ data }) => {
   const {
@@ -14,7 +16,7 @@ const TableRow = ({ data }) => {
         <input type='checkbox' />
       </td>
       <td className='favorite'>
-        star
+        <FontAwesomeIcon icon={faStar} />
       </td>
       <td className='sender'>
         {sender}

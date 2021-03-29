@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
     <div className='main-container'>
       <Header />
       <div className='grid'>
-        <Sidebar tags={emailTags} total={data.length} />
+        <Sidebar tags={emailTags} total={data && data.length} />
         {children}
       </div>
     </div>

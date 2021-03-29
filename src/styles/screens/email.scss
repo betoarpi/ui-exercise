@@ -1,0 +1,27 @@
+@import '../index.scss';
+
+.email {
+  padding: 1rem 3rem;
+  max-width: 900px;
+
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  .sender {
+    border-bottom: 1px solid $border;
+    border-top: 1px solid $border;
+    display: block;
+    padding: 1rem 0;
+  }
+
+  .time {
+    color: $gray;
+    margin-left: 1rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    border-top: 1px solid $border;
+    margin-top: 2rem;
+  }
+}

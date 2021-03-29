@@ -1,8 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Moment from 'react-moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const TableRow = ({ data }) => {
+import { setActiveEmail } from '../redux/actions';
+
+const TableRow = ({ data, setActiveEmail }) => {
   const {
     date,
     id,
@@ -10,6 +16,14 @@ const TableRow = ({ data }) => {
     subject,
     tags
   } = data;
+
+  const history = useHistory()
+
+  const handleEmail = () => {
+    setActiveEmail(data);
+    history.push(`/email/${id}`);
+  }
+
   return (
     <tr className='table__row' id={id} data-tags={tags}>
       <td className='checkbox'>
@@ -18,20 +32,25 @@ const TableRow = ({ data }) => {
       <td className='favorite'>
         <FontAwesomeIcon icon={faStar} />
       </td>
-      <td className='sender'>
+      <td className='sender' onClick={handleEmail}>
         {sender}
       </td>
-      <td className='subject'>
+      <td className='subject' onClick={handleEmail}>
         {subject}
       </td>
-      <td className='icon'>
-        ico
-      </td>
-      <td className='date'>
-        {date}
+      <td className='date' onClick={handleEmail}>
+        <Moment format="MMM DD">{date}</Moment>
       </td>
     </tr>
   );
 };
 
-export default TableRow;
+const mapStateToProps = state => ({
+  favoriteEmails: state.emailState.favoriteEmails,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  setActiveEmail,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableRow);

@@ -1,6 +1,7 @@
 import { 
   ACTIVE_EMAIL,
-  FAVORITE_EMAILS
+  SET_FAVORITE,
+  DELETE_FAVORITE
 } from '../actionTypes';
 
 const initialState = {
@@ -18,10 +19,15 @@ export default function (state = initialState, action) {
         ...state,
         openedEmail: data,
       };
-    case FAVORITE_EMAILS:
+    case SET_FAVORITE:
       return {
         ...state,
-        favoriteEmails: data,
+        favoriteEmails: [...state.favoriteEmails, data],
+      };
+    case DELETE_FAVORITE:
+      return {
+        ...state,
+        favoriteEmails: state.favoriteEmails.filter((item) => item !== data),
       };
     default:
       return state

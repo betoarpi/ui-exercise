@@ -6,9 +6,9 @@ import Moment from 'react-moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-import { setActiveEmail } from '../redux/actions';
+import { deleteFavoriteEmail, setActiveEmail, setFavoriteEmail } from '../redux/actions';
 
-const TableRow = ({ data, setActiveEmail }) => {
+const TableRow = ({ data, favoriteEmails, setActiveEmail, setFavoriteEmail, deleteFavoriteEmail }) => {
   const {
     date,
     id,
@@ -17,20 +17,30 @@ const TableRow = ({ data, setActiveEmail }) => {
     tags
   } = data;
 
-  const history = useHistory()
+  const history = useHistory();
+
+  const isFavorite = favoriteEmails.includes(id);
 
   const handleEmail = () => {
     setActiveEmail(data);
     history.push(`/email/${id}`);
   }
 
+  const handleFavorite = () => {
+    isFavorite === true ? deleteFavoriteEmail(id) : setFavoriteEmail(id);
+  }
+
+
   return (
     <tr className='table__row' id={id} data-tags={tags}>
       <td className='checkbox'>
         <input type='checkbox' />
       </td>
-      <td className='favorite'>
-        <FontAwesomeIcon icon={faStar} />
+      <td className='favorite' onClick={handleFavorite}>
+        <FontAwesomeIcon
+          icon={faStar}
+          color={isFavorite === true ? '#F4B400' : '#DADCE0'}
+        />
       </td>
       <td className='sender' onClick={handleEmail}>
         {sender}
@@ -51,6 +61,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   setActiveEmail,
+  setFavoriteEmail,
+  deleteFavoriteEmail,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableRow);

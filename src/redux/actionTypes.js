@@ -1,2 +1,3 @@
 export const ACTIVE_EMAIL = 'ACTIVE_EMAIL';
-export const FAVORITE_EMAILS = 'FAVORITE_EMAILS';
+export const SET_FAVORITE = 'SET_FAVORITE';
+export const DELETE_FAVORITE = 'DELETE_FAVORITE';
